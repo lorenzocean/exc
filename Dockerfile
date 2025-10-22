@@ -23,10 +23,17 @@ FROM base AS builder
 WORKDIR /app
 # Copy node_modules from deps stage
 COPY --from=deps /app/node_modules ./node_modules
-# Copy all source files
+# Copy all source files (excluding .env files via .dockerignore)
 COPY . .
+
+# IMPORTANT: DO NOT copy .env files!
+# Environment variables MUST be provided by the deployment platform:
+# - Vercel: Dashboard -> Settings -> Environment Variables
+# - Render: Dashboard -> Environment -> Environment Variables
+# - Docker: Use --env-file flag or pass individual -e flags
+# See .dockerignore for excluded files
+
 # Build the Next.js application
-# Note: Environment variables are provided by the platform (Vercel/Docker runtime)
 RUN npm run build
 
 # Stage 3: Production runtime
