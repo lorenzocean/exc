@@ -25,15 +25,14 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 # Copy all source files
 COPY . .
-# Copy environment variables for build configuration
-COPY .env .env
 # Build the Next.js application
+# Note: Environment variables are provided by the platform (Vercel/Docker runtime)
 RUN npm run build
 
 # Stage 3: Production runtime
 # Final stage that runs the application
 FROM base AS runner
-LABEL org.opencontainers.image.name="scira.app"
+LABEL org.opencontainers.image.name="mirage.app"
 WORKDIR /app
 
 # Set production environment

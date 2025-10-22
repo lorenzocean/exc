@@ -64,22 +64,22 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/ph',
-        destination: 'https://www.producthunt.com/posts/scira',
+        destination: 'https://www.producthunt.com/posts/mirage',
         permanent: true,
       },
       {
         source: '/raycast',
-        destination: 'https://www.raycast.com/zaidmukaddam/scira',
+        destination: 'https://www.raycast.com/zaidmukaddam/mirage',
         permanent: true,
       },
       {
         source: '/plst',
-        destination: 'https://peerlist.io/zaidmukaddam/project/scira-ai-30',
+        destination: 'https://peerlist.io/zaidmukaddam/project/mirage-ai',
         permanent: true,
       },
       {
         source: '/blog',
-        destination: 'https://blog.scira.ai',
+        destination: 'https://blog.mirage.ai',
         permanent: true,
       },
     ];

@@ -5,3 +5,13 @@ npm-debug.log
 README.md
 .next
 .git
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+*.log
+.DS_Store
+coverage
+.vscode
+.idea
