@@ -93,7 +93,7 @@ const NavigationMenu = memo(() => {
         )}
 
         <DropdownMenuItem className="cursor-pointer" asChild>
-          <a href={'https://api.scira.ai/'} target="_blank" className="w-full flex items-center gap-2">
+          <a href={'https://api.mirage.ai/'} target="_blank" className="w-full flex items-center gap-2">
             <CodeIcon size={16} />
             <span>API</span>
           </a>
@@ -160,7 +160,7 @@ const NavigationMenu = memo(() => {
           </a>
         </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer" asChild>
-          <a href={'https://www.instagram.com/scira.ai'} target="_blank" className="w-full flex items-center gap-2">
+          <a href={'https://www.instagram.com/mirage.ai'} target="_blank" className="w-full flex items-center gap-2">
             <InstagramLogoIcon size={16} />
             <span>Instagram</span>
           </a>
@@ -217,7 +217,7 @@ const UserProfile = memo(
     const [signingIn, setSigningIn] = useState(false);
     const [signInDialogOpen, setSignInDialogOpen] = useState(false);
     const [showEmail, setShowEmail] = useState(false);
-    const [blurPersonalInfo] = useLocalStorage<boolean>('scira-blur-personal-info', false);
+    const [blurPersonalInfo] = useLocalStorage<boolean>('mirage-blur-personal-info', false);
     const { data: session, isPending } = useSession();
     const router = useRouter();
 

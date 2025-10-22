@@ -6,7 +6,7 @@ import { convertToModelMessages, customProvider, generateText, stepCountIs } fro
 
 const scira = customProvider({
   languageModels: {
-    'scira-default': xai('grok-4-fast-reasoning'),
+    'mirage-default': xai('grok-4-fast-reasoning'),
   },
 });
 

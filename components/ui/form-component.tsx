@@ -121,7 +121,7 @@ const ModelSwitcher: React.FC<ModelSwitcherProps> = React.memo(
     const [searchQuery, setSearchQuery] = useState('');
 
     // Global model order (Pro users): top-level hook to satisfy Rules of Hooks
-    const [globalModelOrder] = useLocalStorage<string[]>('scira-model-order-global', [] as string[]);
+    const [globalModelOrder] = useLocalStorage<string[]>('mirage-model-order-global', [] as string[]);
 
     const normalizeText = useCallback((input: string): string => {
       return input
@@ -433,10 +433,10 @@ const ModelSwitcher: React.FC<ModelSwitcherProps> = React.memo(
 
     // Persisted ordering: category order and per-category model order
     const [modelCategoryOrder] = useLocalStorage<string[]>(
-      'scira-model-category-order',
+      'mirage-model-category-order',
       isProUser ? ['Pro', 'Experimental', 'Free'] : ['Free', 'Experimental', 'Pro'],
     );
-    const [modelOrderMap] = useLocalStorage<Record<string, string[]>>('scira-model-order', {});
+    const [modelOrderMap] = useLocalStorage<Record<string, string[]>>('mirage-model-order', {});
 
     const orderedGroupEntries = useMemo(() => {
       const baseOrder = modelCategoryOrder && modelCategoryOrder.length > 0
@@ -496,18 +496,18 @@ const ModelSwitcher: React.FC<ModelSwitcherProps> = React.memo(
       const isCurrentModelRestricted = isModelRestrictedInRegion(selectedModel, countryCode || undefined);
 
       // If current model is restricted in user's region, switch to default
-      if (isCurrentModelRestricted && selectedModel !== 'scira-default') {
-        console.log(`Auto-switching from restricted model '${selectedModel}' to 'scira-default' - model not available in region ${countryCode}`);
-        setSelectedModel('scira-default');
+      if (isCurrentModelRestricted && selectedModel !== 'mirage-default') {
+        console.log(`Auto-switching from restricted model '${selectedModel}' to 'mirage-default' - model not available in region ${countryCode}`);
+        setSelectedModel('mirage-default');
         toast.info('Switched to default model - Selected model not available in your region');
         return;
       }
 
       // If current model requires pro but user is not pro, switch to default
       // Also prevent infinite loops by ensuring we're not already on the default model
-      if (currentModelExists && currentModelRequiresPro && !isProUser && selectedModel !== 'scira-default') {
-        console.log(`Auto-switching from pro model '${selectedModel}' to 'scira-default' - user lost pro access`);
-        setSelectedModel('scira-default');
+      if (currentModelExists && currentModelRequiresPro && !isProUser && selectedModel !== 'mirage-default') {
+        console.log(`Auto-switching from pro model '${selectedModel}' to 'mirage-default' - user lost pro access`);
+        setSelectedModel('mirage-default');
 
         // Show a toast notification to inform the user
         toast.info('Switched to default model - Pro subscription required for premium models');
@@ -1725,7 +1725,7 @@ const GroupModeToggle: React.FC<GroupSelectorProps> = React.memo(
     const isExtreme = selectedGroup === 'extreme';
 
     // Get search provider from localStorage with reactive updates
-    const [searchProvider] = useLocalStorage<SearchProvider>('scira-search-provider', 'parallel');
+    const [searchProvider] = useLocalStorage<SearchProvider>('mirage-search-provider', 'parallel');
 
     // Get dynamic search groups based on the selected search provider
     const dynamicSearchGroups = useMemo(() => getSearchGroups(searchProvider), [searchProvider]);
@@ -1745,7 +1745,7 @@ const GroupModeToggle: React.FC<GroupSelectorProps> = React.memo(
 
     // Persisted order for groups - must match settings-dialog.tsx
     const [groupOrder] = useLocalStorage<SearchGroupId[]>(
-      'scira-group-order',
+      'mirage-group-order',
       dynamicSearchGroups.map((g) => g.id),
     );
 
@@ -2708,7 +2708,7 @@ const FormComponent: React.FC<FormComponentProps> = ({
           
           if (extremeModels.length > 0) {
             // Prioritize: scira-default if available, otherwise first free model, then first available
-            const defaultModel = extremeModels.find((m) => m.value === 'scira-default');
+            const defaultModel = extremeModels.find((m) => m.value === 'mirage-default');
             const firstFreeModel = extremeModels.find((m) => !m.pro);
             const fallbackModel = extremeModels[0];
             

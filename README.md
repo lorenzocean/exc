@@ -1,12 +1,12 @@
-# Scira
+# Mirage
 
-![Scira](/app/opengraph-image.png)
+![Mirage](/app/opengraph-image.png)
 
-A minimalistic AI-powered search engine that helps you find information on the internet.
+An advanced AI-powered search engine with hybrid intelligence, featuring 120+ tools and sophisticated workflow capabilities.
 
-🔗 **[Try Scira at scira.ai](https://scira.ai)**
+🔗 **[Try Mirage at mirage.ai](https://mirage.ai)**
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/zaidmukaddam/scira)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/zaidmukaddam/mirage)
 
 ## Powered By
 
@@ -88,11 +88,12 @@ A minimalistic AI-powered search engine that helps you find information on the i
 
 ## LLM Models Supported
 
-- **xAI**: Grok 3, Grok 3 Mini, Grok 2 Vision
-- **Google**: Gemini 2.5 Flash (Preview), Gemini 2.5 Pro (Preview)
+- **Mirage Hybrid**: Advanced hybrid AI with 120+ tools, workflow capabilities, and Dify integration (FREE, no login required)
+- **xAI**: Grok 3, Grok 3 Mini, Grok 4
+- **Google**: Gemini 2.5 Flash, Gemini 2.5 Pro
 - **Anthropic**: Claude 4 Sonnet
-- **OpenAI**: GPT-4o, o4-mini, o3 (with reasoning capabilities)
-- **Groq**: Qwen QwQ 32B, Qwen 3 32B, Meta's Llama 4 Maverick
+- **OpenAI**: GPT-4.1, GPT-5, o3, o4-mini (with reasoning capabilities)
+- **Groq**: Qwen 3 32B, various specialized models
 
 ## Built with
 

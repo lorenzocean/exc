@@ -34,7 +34,7 @@ import { ElevenLabsLogo } from '@/components/logos/elevenlabs-logo';
 import { PRICING, SEARCH_LIMITS } from '@/lib/constants';
 
 import { ThemeSwitcher } from '@/components/theme-switcher';
-import { SciraLogo } from '@/components/logos/scira-logo';
+import { MirageLogo } from '@/components/logos/mirage-logo';
 
 export default function AboutPage() {
   const router = useRouter();
@@ -189,7 +189,7 @@ export default function AboutPage() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link href="/" className="flex justify-items-end gap-1.5 group">
-              <SciraLogo className="size-7 transition-transform group-hover:scale-110" />
+              <MirageLogo className="size-7 transition-transform group-hover:scale-110" />
               <span className="text-2xl font-normal tracking-tighter font-be-vietnam-pro">Scira</span>
             </Link>
 
@@ -262,7 +262,7 @@ export default function AboutPage() {
         <div className="container max-w-4xl mx-auto text-center space-y-12">
           <div className="space-y-6">
             <div className="flex items-end justify-center gap-1 mb-8">
-              <SciraLogo className="size-12" />
+              <MirageLogo className="size-12" />
               <h1 className="text-4xl font-normal font-be-vietnam-pro tracking-tighter">Scira</h1>
             </div>
 
@@ -1124,7 +1124,7 @@ export default function AboutPage() {
           <div className="text-center mt-12 space-y-6">
             <p className="text-muted-foreground">
               Have more questions?{' '}
-              <a href="mailto:zaid@scira.ai" className="text-primary hover:text-primary/80 transition-colors">
+              <a href="mailto:zaid@mirage.ai" className="text-primary hover:text-primary/80 transition-colors">
                 Contact us
               </a>
             </p>
@@ -1158,7 +1158,7 @@ export default function AboutPage() {
         <div className="container max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <SciraLogo className="size-8" />
+              <MirageLogo className="size-8" />
               <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Scira. All rights reserved.</p>
             </div>
 

@@ -19,7 +19,7 @@ import {
 } from 'ai';
 import { createMemoryTools } from '@/lib/tools/supermemory';
 import {
-  scira,
+  mirage,
   requiresAuthentication,
   requiresProSubscription,
   shouldBypassRateLimits,
@@ -90,7 +90,7 @@ export function getStreamContext() {
     try {
       globalStreamContext = createResumableStreamContext({
         waitUntil: after,
-        keyPrefix: 'scira-ai',
+        keyPrefix: 'mirage-ai',
       });
     } catch (error: any) {
       if (error.message.includes('REDIS_URL')) {
@@ -325,7 +325,7 @@ export async function POST(req: Request) {
       const streamStartTime = Date.now();
 
       const result = streamText({
-        model: scira.languageModel(model),
+        model: mirage.languageModel(model),
         messages: convertToModelMessages(messages),
         ...getModelParameters(model),
         stopWhen: stepCountIs(5),
@@ -347,33 +347,33 @@ export async function POST(req: Request) {
             only: ['zai', 'deepseek', 'alibaba', 'baseten'],
           },
           openai: {
-            ...(model !== 'scira-qwen-coder'
+            ...(model !== 'mirage-qwen-coder'
               ? {
                 parallelToolCalls: false,
               }
               : {}),
-            ...((model === 'scira-gpt5' ||
-              model === 'scira-gpt5-mini' ||
-              model === 'scira-o3' ||
-              model === 'scira-gpt5-nano' ||
-              model === 'scira-gpt5-codex' ||
-              model === 'scira-gpt5-medium' ||
-              model === 'scira-o4-mini' ||
-              model === 'scira-gpt-4.1' ||
-              model === 'scira-gpt-4.1-mini' ||
-              model === 'scira-gpt-4.1-nano'
+            ...((model === 'mirage-gpt5' ||
+              model === 'mirage-gpt5-mini' ||
+              model === 'mirage-o3' ||
+              model === 'mirage-gpt5-nano' ||
+              model === 'mirage-gpt5-codex' ||
+              model === 'mirage-gpt5-medium' ||
+              model === 'mirage-o4-mini' ||
+              model === 'mirage-gpt-4.1' ||
+              model === 'mirage-gpt-4.1-mini' ||
+              model === 'mirage-gpt-4.1-nano'
               ? {
                 reasoningEffort: (
-                  model === 'scira-gpt5-nano' ||
-                    model === 'scira-gpt5' ||
-                    model === 'scira-gpt5-mini' ?
+                  model === 'mirage-gpt5-nano' ||
+                    model === 'mirage-gpt5' ||
+                    model === 'mirage-gpt5-mini' ?
                     'minimal' :
                     'medium'
                 ),
-                promptCacheKey: 'scira-oai',
+                promptCacheKey: 'mirage-oai',
                 parallelToolCalls: false,
                 reasoningSummary: 'detailed',
-                textVerbosity: (model === 'scira-o3' || model === 'scira-gpt5-codex' || model === 'scira-o4-mini' || model === 'scira-gpt-4.1' || model === 'scira-gpt-4.1-mini' || model === 'scira-gpt-4.1-nano' ? 'medium' : 'high'),
+                textVerbosity: (model === 'mirage-o3' || model === 'mirage-gpt5-codex' || model === 'mirage-o4-mini' || model === 'mirage-gpt-4.1' || model === 'mirage-gpt-4.1-mini' || model === 'mirage-gpt-4.1-nano' ? 'medium' : 'high'),
               }
               : {}) satisfies OpenAIResponsesProviderOptions),
           },
@@ -381,13 +381,13 @@ export async function POST(req: Request) {
             parallelToolCalls: false,
           },
           groq: {
-            ...(model === 'scira-gpt-oss-20' || model === 'scira-gpt-oss-120'
+            ...(model === 'mirage-gpt-oss-20' || model === 'mirage-gpt-oss-120'
               ? {
                 reasoningEffort: 'high',
                 reasoningFormat: 'hidden',
               }
               : {}),
-            ...(model === 'scira-qwen-32b'
+            ...(model === 'mirage-qwen-32b'
               ? {
                 reasoningEffort: 'none',
               }
@@ -400,7 +400,7 @@ export async function POST(req: Request) {
             parallel_tool_calls: false,
           },
           cohere: {
-            ...(model === 'scira-cmd-a-think'
+            ...(model === 'mirage-cmd-a-think'
               ? {
                 thinking: {
                   type: 'enabled',
@@ -410,7 +410,7 @@ export async function POST(req: Request) {
               : {}),
           } satisfies CohereChatModelOptions,
           anthropic: {
-            ...(model === 'scira-anthropic-think'
+            ...(model === 'mirage-anthropic-think'
               ? {
                 sendReasoning: true,
                 thinking: {
@@ -422,7 +422,7 @@ export async function POST(req: Request) {
             disableParallelToolUse: true,
           } satisfies AnthropicProviderOptions,
           google: {
-            ...(model === 'scira-google-think' || model === 'scira-google-pro-think'
+            ...(model === 'mirage-google-think' || model === 'mirage-google-pro-think'
               ? {
                 thinkingConfig: {
                   thinkingBudget: 400,
@@ -544,7 +544,7 @@ export async function POST(req: Request) {
           }
 
           const { object: repairedArgs } = await generateObject({
-            model: scira.languageModel('scira-grok-4-fast'),
+            model: mirage.languageModel('mirage-grok-4-fast'),
             schema: tool.inputSchema,
             prompt: [
               `The model tried to call the tool "${toolCall.toolName}"` + ` with the following arguments:`,
